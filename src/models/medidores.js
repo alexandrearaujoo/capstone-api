@@ -1,0 +1,43 @@
+import mongoose from "../database/index.js";
+
+const MedidoresSchema = new mongoose.Schema({
+    codigo: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    endereco: {
+        type: String,
+        required: true,
+    },
+    numero: {
+        type: String,
+        required: true
+    },
+    bairro: {
+        type: String,
+        required: true
+    },
+    cidade: {
+        type: String,
+        required: true
+    },
+    estado: {
+        type: String,
+        required: true
+    },
+    cretedAt: {
+        type: Date,
+        default: new Date()
+    },
+    idAssociado: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        require: true,
+        default: null
+    }
+})
+
+const Medidor = mongoose.model('Medidores', MedidoresSchema)
+
+export default Medidor
