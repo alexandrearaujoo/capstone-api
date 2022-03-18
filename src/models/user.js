@@ -40,6 +40,10 @@ const UserSchema = new mongoose.Schema({
         required: true,
         default: "https://media.istockphoto.com/vectors/profile-placeholder-image-gray-silhouette-no-photo-vector-id1016744034?k=20&m=1016744034&s=170667a&w=0&h=JlerB4H3IeLolDMQOYiAF9uLuZeW0bs4jH6NdrNPDtE="
     },
+    historico_pagamentos: {
+        type: Array,
+        default: []
+    },
     createdAt:{
         type: Date,
         default: new Date()

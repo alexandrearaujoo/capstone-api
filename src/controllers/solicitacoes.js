@@ -1,11 +1,17 @@
 import Solicitacoes from "../models/solicitacoes.js"
+import User from "../models/user.js"
 
 class SolicitacoesController {
     static async createRequest (req, res) {
         try {
              const {title, description} = req.body  
+
+             const {id} = req.params
+
+             const user = await User.findById(id)
              
              const request = await Solicitacoes.create({
+                name: user.name,
                 title,
                 description
              })

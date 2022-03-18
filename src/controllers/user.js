@@ -4,7 +4,7 @@ import  jwt from 'jsonwebtoken'
 class UserControler {
     static async createUser (req, res) {
         try {
-            const {email, name, password, avatarUrl, endereco, numero, cidade, estado, bairro} = req.body
+            const {email, name, password, avatarUrl, endereco, numero, cidade, estado, bairro, historico_pagamento} = req.body
 
             const user = await User.create({
                 email,
@@ -15,7 +15,8 @@ class UserControler {
                 numero,
                 cidade,
                 estado,
-                bairro
+                bairro,
+                historico_pagamento
             })
 
             res.status(201).json(user)

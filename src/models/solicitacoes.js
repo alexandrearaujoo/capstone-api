@@ -1,6 +1,11 @@
 import mongoose from '../database/index.js'
 
 const SolicitacoesSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        ref: 'User',
+        default: null
+    },
     title: {
         type: String,
         required: true
