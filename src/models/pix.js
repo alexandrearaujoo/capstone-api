@@ -1,14 +1,13 @@
 import mongoose from "../database/index.js";
 
 const PixSchema = new mongoose.Schema({
-    fatura: {
-        type: String,
+    medidor: {
+        type: Number,
         required: true,
-        unique: true
     },
     valor: {
-        type: String,
-        required: true,
+        type: Number,
+        default: 0
     },
     qrCode: {
         type: String,

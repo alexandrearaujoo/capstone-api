@@ -4,11 +4,13 @@ import userRouter from "./routes/user.js";
 import medidorRouter from './routes/medidores.js'
 import requestRouter from './routes/solicitacoes.js'
 import pixRouter from './routes/pix.js'
+import cors from 'cors'
 
 config()
 const app = express()
 
 app.use(express.json())
+app.use(cors())
 
 app.use('/users', userRouter)
 app.use('/medidores', medidorRouter)

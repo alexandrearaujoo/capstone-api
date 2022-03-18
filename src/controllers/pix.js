@@ -4,13 +4,20 @@ import User from "../models/user.js"
 class PixController {
     static async createPix (req, res) {
         try {
-            const {fatura, valor, qrCode} = req.body
+            const {medidor,qrCode} = req.body
             const {id} = req.params
             const user = await User.findById(id)
-            
+
+            if (medidor >= 10000){
+                console.log('oi')
+            }
+            else {
+                console.log('aqui')
+            }
+    
             const pix = await Pix.create({
-                fatura,
-                valor,
+                medidor,
+                valor: 18 * 2,
                 qrCode
             })
             const newList = [...user.historico_pagamentos, pix]
@@ -26,6 +33,7 @@ class PixController {
 
             res.status(201).json(pix)
         } catch (error) {
+            console.log(error)
             res.status(500).json({'erro': 'algo deu errado'})
         }
     }
