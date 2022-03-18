@@ -4,18 +4,20 @@ import  jwt from 'jsonwebtoken'
 class UserControler {
     static async createUser (req, res) {
         try {
-            const {email, name, password, avatarUrl, endereco, numero, cidade, estado, bairro, historico_pagamento} = req.body
+            const {email, name, password,cpf,tipo_user, avatarUrl, endereco, numero, cidade, estado, bairro, historico_pagamento} = req.body
 
             const user = await User.create({
                 email,
                 password,
                 name,
+                cpf,
                 avatarUrl,
                 endereco,
                 numero,
                 cidade,
                 estado,
                 bairro,
+                tipo_user,
                 historico_pagamento
             })
 
@@ -51,12 +53,13 @@ class UserControler {
     static async updateUser (req, res) {
         try {
             const { id } = req.params
-            const { name, password, avatarUrl} = req.body
+            const { name, password, avatarUrl, tipo_user} = req.body
 
             const userUpdated = await User.findByIdAndUpdate(id, {
                 name,
                 password,
                 avatarUrl,
+                tipo_user,
                 new: true
             }, {
                 returnDocument: 'after'
@@ -64,6 +67,7 @@ class UserControler {
 
             res.status(200).json(userUpdated)
         } catch (error) {
+            console.log(error)
             res.status(500).json({"error": "algo deu errado"})
         }
     }
@@ -82,17 +86,17 @@ class UserControler {
 
     static async login (req, res) {
         try {
-            const {email, password} = req.body
+            const {cpf, password} = req.body
 
             const user = await User.findOne({
-                email
+                cpf
             }).select('+password')
 
             if (!user) {
                 res.status(404).json({'erro': "usuario nao encontrado"})
             }
             if (user.password !== password) {
-                res.status(409).json({'erro': 'senha invalida'})
+                res.status(409).json({'erro': 'codigo invalida'})
             }
             const token = jwt.sign({
                 id: user.id
@@ -100,7 +104,7 @@ class UserControler {
                 expiresIn: '1d'
             })
 
-            res.json({token: token})
+            res.json({token: token, id: user.id, name: user.name, tipo_user: user.tipo_user})
 
         } catch (error) {
             res.status(500).json({"error": "algo deu errado"})

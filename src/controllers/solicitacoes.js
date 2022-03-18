@@ -4,7 +4,7 @@ import User from "../models/user.js"
 class SolicitacoesController {
     static async createRequest (req, res) {
         try {
-             const {title, description} = req.body  
+             const {title, description, tel} = req.body  
 
              const {id} = req.params
 
@@ -13,7 +13,8 @@ class SolicitacoesController {
              const request = await Solicitacoes.create({
                 name: user.name,
                 title,
-                description
+                description,
+                tel
              })
 
              res.status(201).json(request)

@@ -10,13 +10,17 @@ const SolicitacoesSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    description: {
+    escription: {
         type: String,
         required: true
     },
     status: {
         type: String,
         default: "Pendente"
+    },
+    tel: {
+        type: String,
+        required: true
     },
     createdAt: {
         type: Date,
