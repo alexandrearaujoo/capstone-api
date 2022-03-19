@@ -5,14 +5,16 @@ import qr from 'qrcode'
 class PagamentoController {
     static async createPagamento (req, res) {
         try {
-            const {medidor} = req.body
+            const {medidor, status} = req.body
             const {id} = req.params
             const user = await User.findById(id)
 
 
             const pix = await Pagamento.create({
+                name: user.name,
                 medidor,
                 valor: 18 * 2,
+                status,
                 qrCode: await qr.toDataURL('https://www.youtube.com/')
             })
             const newList = [...user.historico_pagamentos, pix]
@@ -28,7 +30,6 @@ class PagamentoController {
 
             res.status(201).json(pix)
         } catch (error) {
-            console.log(error)
             res.status(500).json({'erro': 'algo deu errado'})
         }
     }
@@ -40,7 +41,25 @@ class PagamentoController {
             res.json(pix)
 
         } catch (error) {
-            console.log(error)
+            res.status(500).json({'erro': 'algo deu errado'})
+        }
+    }
+
+    static async updatePagamento (req, res) {
+        try {
+            const {id} = req.params
+            const status = req.body
+
+            const updatePagamento = await Pagamento.findByIdAndUpdate(id, {
+                status,
+                new: true
+            }, {
+                returnDocument: 'after'
+            })
+
+            res.json(updatePagamento)
+            
+        } catch (error) {
             res.status(500).json({'erro': 'algo deu errado'})
         }
     }
@@ -55,7 +74,6 @@ class PagamentoController {
             res.json({})
 
         } catch (error) {
-            console.log(error)
             res.status(500).json({'erro': 'algo deu errado'})
         }
     }

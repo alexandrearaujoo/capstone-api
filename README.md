@@ -46,6 +46,7 @@ Criar um usuario
         "avatarUrl": "https://media.istockphoto.com/vectors/profile-placeholder-image-gray-silhouette-no-photo-vector-id1016744034?k=20&m=1016744034&s=170667a&w=0&h=JlerB4H3IeLolDMQOYiAF9uLuZeW0bs4jH6NdrNPDtE=",
         "historico_pagamentos": [],
         "tipo_user": "Associado",
+        "status": "Ativo",
         "createdAt": "2022-03-18T23:23:10.164Z",
         "_id": "6235149812522f0329690802",
         "__v": 0
@@ -75,7 +76,8 @@ Fazer login
         "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMzUwYzk1MjEwNGE0YTk5YWVkMzI0NyIsImlhdCI6MTY0NzY0OTkwOCwiZXhwIjoxNjQ3NzM2MzA4fQ.RWtuQGyCyheuM5thVpilNB6nXeu5HuHwpP7UxzIorrY",
         "id": "62350c952104a4a99aed3247",
         "name": "Alexandre",
-        "tipo_user": "Associado"
+        "tipo_user": "Associado",
+        "status": "Ativo" 
     }
 }
 ```
@@ -102,6 +104,7 @@ Listar todos os usuarios
             "avatarUrl": "https://media.istockphoto.com/vectors/profile-placeholder-image-gray-silhouette-no-photo-vector-id1016744034?k=20&m=1016744034&s=170667a&w=0&h=JlerB4H3IeLolDMQOYiAF9uLuZeW0bs4jH6NdrNPDtE=",
             "historico_pagamentos": [],
             "tipo_user": "Associado",
+            "status": "Ativo",
             "createdAt": "2022-03-18T22:49:17.236Z",
             "__v": 0
 	    }
@@ -128,6 +131,7 @@ Listar apenas um usuario
         "avatarUrl": "https://media.istockphoto.com/vectors/profile-placeholder-image-gray-silhouette-no-photo-vector-id1016744034?k=20&m=1016744034&s=170667a&w=0&h=JlerB4H3IeLolDMQOYiAF9uLuZeW0bs4jH6NdrNPDtE=",
         "historico_pagamentos": [],
         "tipo_user": "Associado",
+        "status": "Ativo",
         "createdAt": "2022-03-18T22:49:17.236Z",
         "__v": 0
 	}
@@ -137,8 +141,7 @@ Listar apenas um usuario
 `Patch - /users/:id`
 
 Alterar algo do usuario </br>
-Campos que podem ser alterados: "name", "avatar_url" e "tipo_user"
-
+Campos que podem ser alterados: "name", "avatar_url","tipo_user" e "status"
 `Body`
 
 ```json
@@ -166,6 +169,7 @@ Campos que podem ser alterados: "name", "avatar_url" e "tipo_user"
         "avatarUrl": "https://media.istockphoto.com/vectors/profile-placeholder-image-gray-silhouette-no-photo-vector-id1016744034?k=20&m=1016744034&s=170667a&w=0&h=JlerB4H3IeLolDMQOYiAF9uLuZeW0bs4jH6NdrNPDtE=",
         "historico_pagamentos": [],
         "tipo_user": "Gestor",
+        "status": "Ativo",
         "createdAt": "2022-03-18T18:07:20.916Z",
         "__v": 0
     }
@@ -414,6 +418,7 @@ Digite a quantidade de metros cubicos que tem no seu medidor/hidrometro
 ```json
 {
     {
+        "name": "Alexandre",
         "medidor": 2000,
         "valor": 36,
         "qrCode": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAACECAYAAABRRIOnAAAAAklEQVR4AewaftIAAAN/SURBVO3BQa7cVgADwe6Huf+VGS+y4EqAIP2x47DK/MLMvw4z5TBTDjPlMFMOM+UwUw4z5TBTDjPlMFMOM+UwUw4z5TBTDjPlw0Mq35SEKyotCU2lJeEJlZaEpvJNSXjiMFMOM+UwUz68LAlvUvkmlZaEpvJEEt6k8qbDTDnMlMNM+fDDVO5Iwh0qLQlN5YpKS8I3qdyRhJ90mCmHmXKYKR/+MiotCVdUmsr/2WGmHGbKYaZ8+J9RaUl4QuVvcpgph5lymCkfflgSfieVKyotCU3lShKeSMKf5DBTDjPlMFM+vEzld0pCU2lJaCp3JKGptCRcUfmTHWbKYaYcZsqHh5LwJ0tCU3lC5Y4k/JccZsphphxmyoeHVFoSmsqbktCS0FRaEq4koam0JDSVO1TelISfdJgph5lymCkfHkpCU3lTEprKlSQ0lZaEJ5LQVJpKS0JTaUm4Q6Ul4U2HmXKYKYeZ8uE3S8IVlTep3KHyhMoVlStJuKLSkvDEYaYcZsphpnz4zVSuJOEOlSeScEXljiQ0lZaEO5LQVN50mCmHmXKYKR8eUnlTEprKE0loKi0JTeVNKldUWhKayjcdZsphphxmyocfloSmckcSmsqVJDSVloSm0pJwh8qVJDSVloSm0pLQVFoS3nSYKYeZcpgpH16WhKbyhEpLwpuS0FRaEprKHSpXVJ5QaUl44jBTDjPlMFM+/GZJuJKEJ5JwRaUloam0JDSVK0loKleScCUJTeVNh5lymCmHmfLhy5Jwh8qbknBF5U0qT6i0JLQkvOkwUw4z5TBTzC/8h6m0JDyh0pLQVK4k4Q6VK0n4psNMOcyUw0z58JDKNyWhJaGpvEmlJaGpXFFpSbiShKZyRxKeOMyUw0w5zJQPL0vCm1SuqLQkXFFpSbii8kQS7lBpSbii8qbDTDnMlMNM+fDDVO5IwhMqd6jcoXJF5YkkNJWWhJaENx1mymGmHGbKh79MEppKS0JTuZKEJ1RaEppKU7miciUJTxxmymGmHGbKh7+MSkvClSRcUbkjCS0JV5LQVK4koam86TBTDjPlMFM+/LAk/KQk3KHSknBHEppKU2lJaCp3JOGbDjPlMFMOM+XDy1S+SeUJlStJuJKEn6TyTYeZcpgph5lifmHmX4eZcpgph5lymCmHmXKYKYeZcpgph5lymCmHmXKYKYeZcpgph5nyD59RaVGNGbxtAAAAAElFTkSuQmCC",

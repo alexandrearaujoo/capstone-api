@@ -52,6 +52,10 @@ const UserSchema = new mongoose.Schema({
         type: String,
         default: "Associado"
     },
+    status: {
+        type: String,
+        default: "Ativo"
+    },
     createdAt:{
         type: Date,
         default: new Date()

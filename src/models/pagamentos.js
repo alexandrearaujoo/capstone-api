@@ -1,6 +1,11 @@
 import mongoose from "../database/index.js";
 
 const PagamentoSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        ref: 'User',
+        default: null
+    },
     medidor: {
         type: Number,
         required: true
@@ -12,6 +17,10 @@ const PagamentoSchema = new mongoose.Schema({
     qrCode: {
         type: String,
         default: ""
+    },
+    status: {
+        type: String,
+        default: "Pendente"
     },
     createdAt: {
         type: Date,

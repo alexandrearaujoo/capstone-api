@@ -4,7 +4,7 @@ import  jwt from 'jsonwebtoken'
 class UserControler {
     static async createUser (req, res) {
         try {
-            const {email, name, password,cpf,tipo_user, avatarUrl, endereco, numero, cidade, estado, bairro, historico_pagamento} = req.body
+            const {email, name, password,cpf,tipo_user,status, avatarUrl, endereco, numero, cidade, estado, bairro, historico_pagamento} = req.body
 
             const user = await User.create({
                 email,
@@ -18,6 +18,7 @@ class UserControler {
                 estado,
                 bairro,
                 tipo_user,
+                status,
                 historico_pagamento
             })
 
@@ -53,13 +54,14 @@ class UserControler {
     static async updateUser (req, res) {
         try {
             const { id } = req.params
-            const { name, password, avatarUrl, tipo_user} = req.body
+            const { name, password, avatarUrl, tipo_user, status} = req.body
 
             const userUpdated = await User.findByIdAndUpdate(id, {
                 name,
                 password,
                 avatarUrl,
                 tipo_user,
+                status,
                 new: true
             }, {
                 returnDocument: 'after'
