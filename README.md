@@ -1,5 +1,5 @@
 <h1 align="center">
-	<img src="https://static.depositphotos.com//storage/bgremove/processed_6a5695f7-a8a4-4ad0-82fb-be40f2ec7255_62353e71620e4.png?isize=600" />
+	<img src="https://static.depositphotos.com//storage/bgremove/processed_6a5695f7-a8a4-4ad0-82fb-be40f2ec7255_62353e71620e4.png?isize=600" height="250px"/>
 </h1>
 
 <h1 align="center">ARAP API</h1>
@@ -136,7 +136,7 @@ Listar apenas um usuario
 
 `Patch - /users/:id`
 
-Alterar algo do usuario
+Alterar algo do usuario </br>
 Campos que podem ser alterados: "name", "avatar_url" e "tipo_user"
 
 `Body`
@@ -274,7 +274,7 @@ Listar apenas um medidor
 
 `Patch - /medidores/:id`
 
-Atualizar medidor
+Atualizar medidor </br>
 Campo que pode ser atualizado: "idAssociado"
 
 `Body`
@@ -308,7 +308,7 @@ Campo que pode ser atualizado: "idAssociado"
 
 `Delete - /medidores/:id`
 
-Deletar um medidor
+Deletar um medidor </br>
 Não possui corpo de requisição
 
 `Resposta`
@@ -354,7 +354,7 @@ Criar uma solicitação
 
 `Patch - /solicitacoes/:id`
 
-Atualizar uma solicitação
+Atualizar uma solicitação </br>
 Campo para mudar: "Status"
 
 `Body`
@@ -396,7 +396,7 @@ Não possui corpo de requisição
 
 `Post - /pagamentos`
 
-Gerar um QR code para pagar
+Gerar um QR code para pagar </br>
 Digite a quantidade de metros cubicos que tem no seu medidor/hidrometro
 
 `Body`
