@@ -67,7 +67,6 @@ class UserControler {
 
             res.status(200).json(userUpdated)
         } catch (error) {
-            console.log(error)
             res.status(500).json({"error": "algo deu errado"})
         }
     }

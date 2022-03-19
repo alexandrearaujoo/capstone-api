@@ -10,7 +10,7 @@ const SolicitacoesSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    escription: {
+    description: {
         type: String,
         required: true
     },

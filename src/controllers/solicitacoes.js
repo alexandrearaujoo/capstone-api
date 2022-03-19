@@ -9,7 +9,7 @@ class SolicitacoesController {
              const {id} = req.params
 
              const user = await User.findById(id)
-             
+
              const request = await Solicitacoes.create({
                 name: user.name,
                 title,

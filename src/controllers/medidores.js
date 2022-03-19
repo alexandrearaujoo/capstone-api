@@ -19,7 +19,6 @@ class MedidorController {
             res.status(200).json(medidor)
             
         } catch (error) {
-            console.log(error)
             res.status(500).json({"erro": "algo deu errado"})
         }
     }
@@ -30,7 +29,6 @@ class MedidorController {
 
             res.status(200).json(medidores)
         } catch (error) {
-            console.log(error)
             res.status(500).json({"erro": "algo deu errado"})
         }
     }
@@ -43,7 +41,6 @@ class MedidorController {
             res.json(medidor)
 
         } catch (error) {
-            console.log(error)
             res.status(500).json({"erro": "algo deu errado"})
         }
     }
@@ -62,7 +59,6 @@ class MedidorController {
 
             res.json(medidorUpdate)
         } catch (error) {
-            console.log(error)
             res.status(500).json({"erro": "algo deu errado"})
         }
     }
