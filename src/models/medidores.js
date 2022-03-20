@@ -26,6 +26,10 @@ const MedidoresSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    status: {
+        type: String,
+        default: 'Ativo'
+    },
     cretedAt: {
         type: Date,
         default: new Date()

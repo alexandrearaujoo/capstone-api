@@ -4,7 +4,7 @@ class MedidorController {
     static async createMedidor (req, res) {
         try {
 
-            const {codigo, endereco, cidade, estado, bairro, numero, idAssociado} = req.body
+            const {codigo, endereco, cidade, estado, bairro, numero, idAssociado, status} = req.body
 
             const medidor = await Medidor.create({
                 codigo,
@@ -13,6 +13,7 @@ class MedidorController {
                 estado,
                 bairro,
                 numero,
+                status,
                 idAssociado
             })
 
