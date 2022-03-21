@@ -28,9 +28,9 @@ class PagamentoController {
                 returnDocument: 'after'
             })
 
-            res.status(201).json(pix)
+            return  res.status(201).json(pix)
         } catch (error) {
-            res.status(500).json({'erro': 'algo deu errado'})
+            return res.status(500).json({'erro': 'algo deu errado'})
         }
     }
     static async findAll (req, res) {
@@ -38,10 +38,10 @@ class PagamentoController {
             
             const pix = await Pagamento.find()
 
-            res.json(pix)
+            return  res.json(pix)
 
         } catch (error) {
-            res.status(500).json({'erro': 'algo deu errado'})
+            return res.status(500).json({'erro': 'algo deu errado'})
         }
     }
 
@@ -57,10 +57,10 @@ class PagamentoController {
                 returnDocument: 'after'
             })
 
-            res.json(updatePagamento)
+            return  res.json(updatePagamento)
             
         } catch (error) {
-            res.status(500).json({'erro': 'algo deu errado'})
+            return  res.status(500).json({'erro': 'algo deu errado'})
         }
     }
 
@@ -71,10 +71,10 @@ class PagamentoController {
 
             await Pagamento.findByIdAndDelete(id)
 
-            res.json({})
+            return res.json({})
 
         } catch (error) {
-            res.status(500).json({'erro': 'algo deu errado'})
+            return  res.status(500).json({'erro': 'algo deu errado'})
         }
     }
 }

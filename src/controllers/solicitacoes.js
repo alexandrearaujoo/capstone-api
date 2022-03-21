@@ -17,9 +17,9 @@ class SolicitacoesController {
                 tel
              })
 
-             res.status(201).json(request)
+             return  res.status(201).json(request)
         } catch (error) {
-            res.status(500).json({'erro': 'Algo deu errado'})
+            return res.status(500).json({'erro': 'Algo deu errado'})
         }
     }
 
@@ -27,10 +27,10 @@ class SolicitacoesController {
         try {
             const requests = await Solicitacoes.find()
 
-            res.json(requests)
+            return res.json(requests)
 
         } catch (error) {
-            res.status(500).json({'erro': 'algo deu errado'})
+            return res.status(500).json({'erro': 'algo deu errado'})
         }
     }
 
@@ -39,10 +39,10 @@ class SolicitacoesController {
             const {id} = req.params
             const request = await Solicitacoes.findById(id)
 
-            res.json(request)
+            return res.json(request)
 
         } catch (error) {
-            res.status(500).json({'erro': 'algo deu errado'})
+            return res.status(500).json({'erro': 'algo deu errado'})
         }
     }
 
@@ -57,9 +57,9 @@ class SolicitacoesController {
                 returnDocument: 'after'
             })
 
-            res.json(requestUpdate)
+            return res.json(requestUpdate)
         } catch (error) {
-            res.status(500).json({'erro': 'algo deu errado'})   
+            return res.status(500).json({'erro': 'algo deu errado'})   
         }
     }
 
@@ -69,9 +69,9 @@ class SolicitacoesController {
 
             await Solicitacoes.findByIdAndDelete(id)
 
-            res.json({})
+            return res.json({})
         } catch (error) {
-            res.status(500).json({'erro': 'algo deu errado'})
+            return res.status(500).json({'erro': 'algo deu errado'})
         }
     }
 }

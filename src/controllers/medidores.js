@@ -17,10 +17,10 @@ class MedidorController {
                 idAssociado
             })
 
-            res.status(200).json(medidor)
+            return  res.status(200).json(medidor)
             
         } catch (error) {
-            res.status(500).json({"erro": "algo deu errado"})
+            return res.status(500).json({"erro": "algo deu errado"})
         }
     }
     
@@ -28,9 +28,9 @@ class MedidorController {
         try {
             const medidores = await Medidor.find()
 
-            res.status(200).json(medidores)
+            return res.status(200).json(medidores)
         } catch (error) {
-            res.status(500).json({"erro": "algo deu errado"})
+            return res.status(500).json({"erro": "algo deu errado"})
         }
     }
 
@@ -39,10 +39,10 @@ class MedidorController {
             const { id } = req.params
             const medidor = await Medidor.findById(id)
 
-            res.json(medidor)
+            return res.json(medidor)
 
         } catch (error) {
-            res.status(500).json({"erro": "algo deu errado"})
+            return res.status(500).json({"erro": "algo deu errado"})
         }
     }
 
@@ -59,9 +59,9 @@ class MedidorController {
                 returnDocument: 'after'
             })
 
-            res.json(medidorUpdate)
+            return res.json(medidorUpdate)
         } catch (error) {
-            res.status(500).json({"erro": "algo deu errado"})
+            return  res.status(500).json({"erro": "algo deu errado"})
         }
     }
 
@@ -71,11 +71,11 @@ class MedidorController {
             const {id} = req.params
             await Medidor.findByIdAndDelete(id)
 
-            res.status(204).json({})
+            return res.status(204).json({})
 
         } catch (error) {
             console.log(error)
-            res.status(500).json({"erro": "algo deu errado"})
+            return res.status(500).json({"erro": "algo deu errado"})
         }
     }
 }

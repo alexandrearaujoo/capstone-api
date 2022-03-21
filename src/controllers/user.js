@@ -22,10 +22,10 @@ class UserControler {
                 historico_pagamento
             })
 
-            res.status(201).json(user)
+            return res.status(201).json(user)
 
         } catch (error) {
-            res.status(500).json({"error": "algo deu errado"})
+            return res.status(500).json({"error": "algo deu errado"})
         }
     }
 
@@ -33,9 +33,9 @@ class UserControler {
         try {
             const users = await User.find()
 
-            res.json(users)
+            return res.json(users)
         } catch (error) {
-            res.status(500).json({"error": "algo deu errado"})
+            return res.status(500).json({"error": "algo deu errado"})
         }
     }
 
@@ -44,10 +44,10 @@ class UserControler {
             const { id } = req.params
             const user = await User.findById(id)
 
-            res.json(user)
+            return res.json(user)
 
         } catch (error) {
-            res.status(500).json({"error": "algo deu errado"})
+            return res.status(500).json({"error": "algo deu errado"})
         }
     }
 
@@ -67,9 +67,9 @@ class UserControler {
                 returnDocument: 'after'
             })
 
-            res.status(200).json(userUpdated)
+             return res.status(200).json(userUpdated)
         } catch (error) {
-            res.status(500).json({"error": "algo deu errado"})
+            return res.status(500).json({"error": "algo deu errado"})
         }
     }
 
@@ -78,10 +78,10 @@ class UserControler {
             const { id } = req.params
             await User.findByIdAndDelete(id)
 
-            res.status(204).json({})
+           return res.status(204).json({})
 
         } catch (error) {
-            res.status(500).json({"error": "algo deu errado"})
+            return res.status(500).json({"error": "algo deu errado"})
         }
     }
 
@@ -120,10 +120,10 @@ class UserControler {
             }).select("+password")
 
             if (!user) {
-                res.status(404).json({'erro': "Usúario nao encontrado"})
+                throw new Error({'erro': "Usuario não encontrado"})
             }
             if (user.email !== password) {
-                res.status(409).json({'erro': 'Senha invalida'})
+                throw new Error({'erro': 'CPF inválido'})
             }
             const token = jwt.sign({
                 id: user.id
@@ -131,7 +131,7 @@ class UserControler {
                 expiresIn: '1d'
             })
 
-            res.json({token: token, id: user.id, name: user.name, tipo_user: user.tipo_user})
+            return res.json({token: token, id: user.id, name: user.name, tipo_user: user.tipo_user})
 
         } catch (error) {
             res.status(500).json({"error": "algo deu errado"})
