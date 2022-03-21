@@ -97,7 +97,7 @@ class UserControler {
                 res.status(404).json({'erro': "usuario nao encontrado"})
             }
             if (user.cpf !== cpf) {
-                res.status(409).json({'erro': 'codigo invalida'})
+                res.status(409).json({'erro': 'CPF invalido'})
             }
             const token = jwt.sign({
                 id: user.id
@@ -123,7 +123,7 @@ class UserControler {
                 res.status(404).json({'erro': "usuario nao encontrado"})
             }
             if (user.email !== password) {
-                res.status(409).json({'erro': 'codigo invalida'})
+                res.status(409).json({'erro': 'Senha invalida'})
             }
             const token = jwt.sign({
                 id: user.id
