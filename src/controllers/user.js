@@ -134,7 +134,7 @@ class UserControler {
             return res.json({token: token, id: user.id, name: user.name, tipo_user: user.tipo_user})
 
         } catch (error) {
-            res.status(500).json({"error": "algo deu errado"})
+            res.status(404).json({"error": "algo deu errado"})
         }
     }
 }
