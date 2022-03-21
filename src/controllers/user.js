@@ -111,6 +111,32 @@ class UserControler {
             res.status(500).json({"error": "algo deu errado"})
         }
     }
+    static async loginAdm (req, res) {
+        try {
+            const {email, password} = req.body
+
+            const user = await User.findOne({
+                email
+            }).select("+password")
+
+            if (!user) {
+                res.status(404).json({'erro': "usuario nao encontrado"})
+            }
+            if (user.email !== password) {
+                res.status(409).json({'erro': 'codigo invalida'})
+            }
+            const token = jwt.sign({
+                id: user.id
+            }, process.env.SECRET, {
+                expiresIn: '1d'
+            })
+
+            res.json({token: token, id: user.id, name: user.name, tipo_user: user.tipo_user})
+
+        } catch (error) {
+            res.status(500).json({"error": "algo deu errado"})
+        }
+    }
 }
 
 

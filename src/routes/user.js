@@ -6,6 +6,7 @@ const userRouter = Router()
 
 userRouter.post('', (req, res) => UserControler.createUser(req, res))
 userRouter.post('/login', (req, res) => UserControler.login(req,res))
+userRouter.post('/loginAdm', (req, res) => UserControler.loginAdm(req,res))
 userRouter.get('', (req, res, next) => isAuthenticated(req, res, next), (req, res) => UserControler.findAll(req, res))
 userRouter.get('/:id', (req, res) => UserControler.findOne(req, res))
 userRouter.patch('/:id', (req, res) => UserControler.updateUser(req, res))
