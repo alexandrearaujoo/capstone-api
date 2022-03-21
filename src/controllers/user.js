@@ -94,10 +94,10 @@ class UserControler {
             })
 
             if (!user) {
-                res.status(404).json({'erro': "usuario nao encontrado"})
+                res.status(404).json({'erro': "Usuario não encontrado"})
             }
             if (user.cpf !== cpf) {
-                res.status(409).json({'erro': 'CPF invalido'})
+                res.status(409).json({'erro': 'CPF inválido'})
             }
             const token = jwt.sign({
                 id: user.id
