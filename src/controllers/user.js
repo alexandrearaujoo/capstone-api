@@ -87,16 +87,16 @@ class UserControler {
 
     static async login (req, res) {
         try {
-            const {cpf, password} = req.body
+            const {cpf} = req.body
 
             const user = await User.findOne({
                 cpf
-            }).select('+password')
+            })
 
             if (!user) {
                 res.status(404).json({'erro': "usuario nao encontrado"})
             }
-            if (user.password !== password) {
+            if (user.cpf !== cpf) {
                 res.status(409).json({'erro': 'codigo invalida'})
             }
             const token = jwt.sign({
