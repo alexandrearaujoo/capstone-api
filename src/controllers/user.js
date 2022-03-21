@@ -120,7 +120,7 @@ class UserControler {
             }).select("+password")
 
             if (!user) {
-                res.status(404).json({'erro': "usuario nao encontrado"})
+                res.status(404).json({'erro': "Usúario nao encontrado"})
             }
             if (user.email !== password) {
                 res.status(409).json({'erro': 'Senha invalida'})
