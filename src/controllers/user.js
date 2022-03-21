@@ -116,7 +116,7 @@ class UserControler {
             const {email, password} = req.body
 
             const user = await User.findOne({
-                email
+                email,
             }).select("+password")
 
             if (!user) {
