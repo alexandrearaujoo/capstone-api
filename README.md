@@ -56,7 +56,7 @@ Criar um usuario
 
 `Post /users/login`
 
-Fazer login
+Fazer login associado
 
 `Body`
 
@@ -64,6 +64,32 @@ Fazer login
 {
     {
         "cpf": "123456",
+    }
+}
+```
+`Resposta`
+
+```json
+{
+    {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMzUwYzk1MjEwNGE0YTk5YWVkMzI0NyIsImlhdCI6MTY0NzY0OTkwOCwiZXhwIjoxNjQ3NzM2MzA4fQ.RWtuQGyCyheuM5thVpilNB6nXeu5HuHwpP7UxzIorrY",
+        "id": "62350c952104a4a99aed3247",
+        "name": "Alexandre",
+        "tipo_user": "Associado",
+        "status": "Ativo" 
+    }
+}
+```
+`Post /users/loginAdm`
+
+Fazer login admin
+
+`Body`
+
+```json
+{
+    {
+        "email": "teste@gmail.com",
         "password": "123456"
     }
 }
@@ -279,7 +305,7 @@ Listar apenas um medidor
 `Patch - /medidores/:id`
 
 Atualizar medidor </br>
-Campo que pode ser atualizado: "idAssociado"
+Campo que pode ser atualizado: "idAssociado" e "status"
 
 `Body`
 
