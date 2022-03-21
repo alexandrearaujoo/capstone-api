@@ -19,7 +19,7 @@ class SolicitacoesController {
 
              res.status(201).json(request)
         } catch (error) {
-            res.status(500).json({'erro': 'algo deu errado'})
+            res.status(500).json({'erro': 'Algo deu errado'})
         }
     }
 
