@@ -122,8 +122,8 @@ class UserControler {
             if (!user) {
                 throw new Error({'erro': "Usuario não encontrado"})
             }
-            if (user.email !== password) {
-                throw new Error({'erro': 'CPF inválido'})
+            if (user.password !== password) {
+                throw new Error({'erro': 'Senha inválido'})
             }
             const token = jwt.sign({
                 id: user.id
