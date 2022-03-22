@@ -16,7 +16,7 @@ const SolicitacoesSchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        default: "Pendente"
+        default: "Ativo"
     },
     tel: {
         type: String,
