@@ -63,7 +63,7 @@ class MedidorController {
 
             return res.json(medidorUpdate)
         } catch (error) {
-            return  res.status(500).json({"erro": "algo deu errado"})
+            return  res.status(500).json({erro: error.message})
         }
     }
 
