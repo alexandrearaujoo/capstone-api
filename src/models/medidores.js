@@ -37,8 +37,7 @@ const MedidoresSchema = new mongoose.Schema({
     cpf: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
-        require: true,
-        default: null
+        default: ''
     }
 })
 
