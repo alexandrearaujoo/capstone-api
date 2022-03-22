@@ -60,7 +60,7 @@ class PagamentoController {
             return  res.json(updatePagamento)
             
         } catch (error) {
-            return  res.status(500).json({'erro': 'algo deu errado'})
+            return  res.status(500).json({'erro': error.message})
         }
     }
 
