@@ -131,7 +131,7 @@ class UserControler {
                 expiresIn: '1d'
             })
 
-            return res.json({token: token, id: user.id, name: user.name, tipo_user: user.tipo_user})
+            return res.json({token: token, id: user.id, name: user.name, tipo_user: user.tipo_user, createdAt: user.createdAt})
 
         } catch (error) {
             res.status(404).json({"error": "algo deu errado"})
