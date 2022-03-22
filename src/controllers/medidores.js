@@ -54,7 +54,7 @@ class MedidorController {
 
         
             const medidorUpdate = await Medidor.findByIdAndUpdate(id, {
-                cpf,
+                cpf: cpf.toString(),
                 status,
                 new: true
             }, {
