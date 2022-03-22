@@ -4,7 +4,7 @@ class MedidorController {
     static async createMedidor (req, res) {
         try {
 
-            const {codigo, endereco, cidade, estado, bairro, numero, idAssociado, status} = req.body
+            const {codigo, endereco, cidade, estado, bairro, numero, cpf, status} = req.body
 
             const medidor = await Medidor.create({
                 codigo,
@@ -14,10 +14,10 @@ class MedidorController {
                 bairro,
                 numero,
                 status,
-                idAssociado
+                cpf
             })
 
-            return  res.status(200).json(medidor)
+            return res.status(200).json(medidor)
             
         } catch (error) {
             return res.status(500).json({"erro": "algo deu errado"})
@@ -50,9 +50,11 @@ class MedidorController {
         try {
 
             const {id} = req.params
-            const {idAssociado, status} = req.body
+            const {cpf, status} = req.body
+
+        
             const medidorUpdate = await Medidor.findByIdAndUpdate(id, {
-                idAssociado,
+                cpf,
                 status,
                 new: true
             }, {
