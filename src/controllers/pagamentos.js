@@ -48,7 +48,7 @@ class PagamentoController {
     static async updatePagamento (req, res) {
         try {
             const {id} = req.params
-            const status = req.body
+            const {status} = req.body
 
             const updatePagamento = await Pagamento.findByIdAndUpdate(id, {
                 status,
