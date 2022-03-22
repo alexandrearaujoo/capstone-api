@@ -45,6 +45,18 @@ class PagamentoController {
         }
     }
 
+    static async findOne (req, res) {
+        try {
+            const {id} = req.params
+            const pagamento = await Pagamento.findById(id)
+
+            return res.json(pagamento)
+
+        } catch (error) {
+            return res.status(500).json({'erro': 'algo deu errado'})
+        }
+    }
+
     static async updatePagamento (req, res) {
         try {
             const {id} = req.params
