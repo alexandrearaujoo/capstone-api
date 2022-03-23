@@ -105,19 +105,19 @@ class UserControler {
                 expiresIn: '1d'
             })
 
-            return res.json({token: token, id: user.id, name: user.name, tipo_user: user.tipo_user})
+            return res.json({token: token, id: user.id, name: user.name, tipo_user: user.tipo_user, createdAt: user.createdAt})
 
         } catch (error) {
             res.status(500).json({"error": "algo deu errado"})
+            }
         }
-    }
-    static async loginAdm (req, res) {
-        try {
-            const {email, password} = req.body
+        static async loginAdm (req, res) {
+            try {
+                const {email, password} = req.body
 
-            const user = await User.findOne({
-                email,
-            }).select("+password")
+                const user = await User.findOne({
+                    email,
+                }).select("+password")
 
             if (!user) {
                 throw new Error({'erro': "Usuario não encontrado"})
