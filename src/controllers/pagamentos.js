@@ -104,7 +104,7 @@ class PagamentoController {
                 historico_pagamentos: [...historico_pagamentos, newPagamento]
             }) 
         } catch (error) {
-            return  res.status(500).json({'erro': 'algo deu errado'})
+            return "Algo deu errado"
         }
     }
 }
