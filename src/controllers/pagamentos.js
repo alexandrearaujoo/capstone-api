@@ -9,7 +9,6 @@ class PagamentoController {
             const {id} = req.params
             const user = await User.findById(id)
 
-
             const pix = await Pagamento.create({
                 name: user.name,
                 medidor,

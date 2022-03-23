@@ -1,4 +1,5 @@
 import mongoose from "../database/index.js";
+import MedidorController from "../controllers/medidores.js";
 
 const UserSchema = new mongoose.Schema({
     email: {

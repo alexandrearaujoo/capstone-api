@@ -50,12 +50,13 @@ class MedidorController {
         try {
 
             const {id} = req.params
-            const {cpf, status} = req.body
+            const {cpf, status, valorAtual} = req.body
 
         
             const medidorUpdate = await Medidor.findByIdAndUpdate(id, {
                 cpf,
                 status,
+                valorAtual,
                 new: true
             }, {
                 returnDocument: 'after'
