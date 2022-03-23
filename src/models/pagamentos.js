@@ -1,6 +1,11 @@
 import mongoose from "../database/index.js";
 
 const PagamentoSchema = new mongoose.Schema({
+    idAssociado: {
+        type: String,
+        ref: 'User',
+        default: null
+    },
     name: {
         type: String,
         ref: 'User',
