@@ -69,6 +69,8 @@ class PagamentoController {
                 returnDocument: 'after'
             })
 
+            this.updateHistorico(updatePagamento)
+
             return  res.json(updatePagamento)
             
         } catch (error) {
@@ -85,6 +87,22 @@ class PagamentoController {
 
             return res.json({})
 
+        } catch (error) {
+            return  res.status(500).json({'erro': 'algo deu errado'})
+        }
+    }
+
+    static async updateHistorico (newPagamento) {
+        try {
+            const {historico_pagamentos} = await User.findById(newPagamento.idAssociado)
+
+            const antigoPagamento = historico_pagamentos.findIndex(({id}) => id === newPagamento.id)
+
+            historico_pagamentos.splice(antigoPagamento, 1)
+
+            await User.findByIdAndUpdate(idAssociado, {
+                historico_pagamentos: [...historico_pagamentos, newPagamento]
+            }) 
         } catch (error) {
             return  res.status(500).json({'erro': 'algo deu errado'})
         }
