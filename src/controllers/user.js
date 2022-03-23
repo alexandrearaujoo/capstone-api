@@ -141,7 +141,17 @@ class UserControler {
                 expiresIn: '1d'
             })
 
-            return res.json({token: token, id: user.id, name: user.name, tipo_user: user.tipo_user, createdAt: user.createdAt})
+            return res.json({
+                token: token, 
+                id: user.id, 
+                name: user.name, 
+                tipo_user: user.tipo_user, 
+                createdAt: user.createdAt,
+                endereco: user.endereco,
+                bairro: user.bairro,
+                cidade: user.cidade,
+                estado: user.estado
+            })
 
         } catch (error) {
             res.status(404).json({"error": "algo deu errado"})
