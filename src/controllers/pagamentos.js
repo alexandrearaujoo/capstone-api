@@ -10,6 +10,7 @@ class PagamentoController {
             const user = await User.findById(id)
 
             const pix = await Pagamento.create({
+                idAssociado: user.id,
                 name: user.name,
                 medidor,
                 valor: 18 * 2,
