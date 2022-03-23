@@ -34,6 +34,10 @@ const MedidoresSchema = new mongoose.Schema({
         type: Date,
         default: new Date()
     },
+    valorAtual: {
+        type: String,
+        required: true
+    },
     cpf: {
         type: String,
         ref: "User",
