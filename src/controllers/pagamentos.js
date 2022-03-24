@@ -13,7 +13,7 @@ class PagamentoController {
         idAssociado: user.id,
         name: user.name,
         medidor,
-        valor: 18 * 2,
+        valor,
         status,
         qrCode: await qr.toDataURL("https://www.youtube.com/"),
       });
@@ -117,6 +117,8 @@ class PagamentoController {
       return "Algo deu errado";
     }
   }
+
+  
 }
 
 export default PagamentoController;
