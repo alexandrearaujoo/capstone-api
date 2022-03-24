@@ -5,7 +5,7 @@ import qr from "qrcode";
 class PagamentoController {
   static async createPagamento(req, res) {
     try {
-      const { medidor, status } = req.body;
+      const { medidor, status, valor} = req.body;
       const { id } = req.params;
       const user = await User.findById(id);
 
